@@ -1,0 +1,56 @@
+---
+title: "tidyverse"
+output: html_document
+date: "2024-07-18"
+---
+```{r}
+##install tidyverse packages
+```
+
+```{r}
+##import sales data set
+library(readxl)
+transactions <- read_excel(file.choose())
+str(transactions)
+```
+```{r}
+##  show some selected comumns
+```
+
+
+```{r}
+library(dplyr)
+select(transactions,order_date,last_name,country,channel)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+select(transactions,starts_with("c"))
+```
+```{r}
+select(transactions,contains("_"))
+```
+```{r}
+str(transactions)
+```
+```{r}
+transactions$order_date<- as.Date(transactions$order_date)
+```
+```{r}
+```
+
+
+```{r}
+filtered <- filter(transactions,country == "Canada" & category == "Golf")
+select(filtered,order_date,country,category,price)
+
+```
+
+
+```{r}
+chunck <- filter(transactions,country =="Canada" | country== "Usa")
+select(chunck,order_date,country,category)
+```
